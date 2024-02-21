@@ -11,16 +11,16 @@ namespace ContabilidadeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TbFornecedorsController : ControllerBase
+    public class Fornecedores : ControllerBase
     {
         private readonly db_ConFinContext _context;
 
-        public TbFornecedorsController(db_ConFinContext context)
+        public Fornecedores(db_ConFinContext context)
         {
             _context = context;
         }
 
-        // GET: api/TbFornecedors
+        // GET: api/Fornecedores
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbFornecedor>>> GetTbFornecedors()
         {
@@ -31,7 +31,7 @@ namespace ContabilidadeAPI.Controllers
             return await _context.TbFornecedors.ToListAsync();
         }
 
-        // GET: api/TbFornecedors/5
+        // GET: api/Fornecedores/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TbFornecedor>> GetTbFornecedor(int id)
         {
@@ -49,7 +49,7 @@ namespace ContabilidadeAPI.Controllers
             return tbFornecedor;
         }
 
-        // PUT: api/TbFornecedors/5
+        // PUT: api/Fornecedores/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTbFornecedor(int id, TbFornecedor tbFornecedor)
@@ -80,7 +80,7 @@ namespace ContabilidadeAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/TbFornecedors
+        // POST: api/Fornecedores
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<TbFornecedor>> PostTbFornecedor(TbFornecedor tbFornecedor)
@@ -95,7 +95,7 @@ namespace ContabilidadeAPI.Controllers
             return CreatedAtAction("GetTbFornecedor", new { id = tbFornecedor.IdFornecedor }, tbFornecedor);
         }
 
-        // DELETE: api/TbFornecedors/5
+        // DELETE: api/Fornecedores/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTbFornecedor(int id)
         {

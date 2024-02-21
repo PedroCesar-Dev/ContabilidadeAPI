@@ -11,16 +11,16 @@ namespace ContabilidadeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TbFuncionariosController : ControllerBase
+    public class Funcionarios : ControllerBase
     {
         private readonly db_ConFinContext _context;
 
-        public TbFuncionariosController(db_ConFinContext context)
+        public Funcionarios(db_ConFinContext context)
         {
             _context = context;
         }
 
-        // GET: api/TbFuncionarios
+        // GET: api/Funcionarios
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbFuncionario>>> GetTbFuncionarios()
         {
@@ -31,7 +31,7 @@ namespace ContabilidadeAPI.Controllers
             return await _context.TbFuncionarios.ToListAsync();
         }
 
-        // GET: api/TbFuncionarios/5
+        // GET: api/Funcionarios/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TbFuncionario>> GetTbFuncionario(int id)
         {
@@ -49,7 +49,7 @@ namespace ContabilidadeAPI.Controllers
             return tbFuncionario;
         }
 
-        // PUT: api/TbFuncionarios/5
+        // PUT: api/Funcionarios/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTbFuncionario(int id, TbFuncionario tbFuncionario)
@@ -80,7 +80,7 @@ namespace ContabilidadeAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/TbFuncionarios
+        // POST: api/Funcionarios
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<TbFuncionario>> PostTbFuncionario(TbFuncionario tbFuncionario)
@@ -95,7 +95,7 @@ namespace ContabilidadeAPI.Controllers
             return CreatedAtAction("GetTbFuncionario", new { id = tbFuncionario.IdFuncionario }, tbFuncionario);
         }
 
-        // DELETE: api/TbFuncionarios/5
+        // DELETE: api/Funcionarios/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTbFuncionario(int id)
         {

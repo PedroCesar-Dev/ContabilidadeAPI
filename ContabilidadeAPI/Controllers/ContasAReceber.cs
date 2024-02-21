@@ -11,16 +11,16 @@ namespace ContabilidadeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TbContasARecebersController : ControllerBase
+    public class ContasAReceber : ControllerBase
     {
         private readonly db_ConFinContext _context;
 
-        public TbContasARecebersController(db_ConFinContext context)
+        public ContasAReceber(db_ConFinContext context)
         {
             _context = context;
         }
 
-        // GET: api/TbContasARecebers
+        // GET: api/ContasAReceber
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbContasAReceber>>> GetTbContasARecebers()
         {
@@ -31,7 +31,7 @@ namespace ContabilidadeAPI.Controllers
             return await _context.TbContasARecebers.ToListAsync();
         }
 
-        // GET: api/TbContasARecebers/5
+        // GET: api/ContasAReceber/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TbContasAReceber>> GetTbContasAReceber(int id)
         {
@@ -49,7 +49,7 @@ namespace ContabilidadeAPI.Controllers
             return tbContasAReceber;
         }
 
-        // PUT: api/TbContasARecebers/5
+        // PUT: api/ContasAReceber/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTbContasAReceber(int id, TbContasAReceber tbContasAReceber)
@@ -80,7 +80,7 @@ namespace ContabilidadeAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/TbContasARecebers
+        // POST: api/ContasAReceber
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<TbContasAReceber>> PostTbContasAReceber(TbContasAReceber tbContasAReceber)
@@ -95,7 +95,7 @@ namespace ContabilidadeAPI.Controllers
             return CreatedAtAction("GetTbContasAReceber", new { id = tbContasAReceber.IdContas }, tbContasAReceber);
         }
 
-        // DELETE: api/TbContasARecebers/5
+        // DELETE: api/ContasAReceber/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTbContasAReceber(int id)
         {

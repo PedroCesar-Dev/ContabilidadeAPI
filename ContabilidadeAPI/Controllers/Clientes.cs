@@ -11,55 +11,55 @@ namespace ContabilidadeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TbEmpresasController : ControllerBase
+    public class Clientes : ControllerBase
     {
         private readonly db_ConFinContext _context;
 
-        public TbEmpresasController(db_ConFinContext context)
+        public Clientes(db_ConFinContext context)
         {
             _context = context;
         }
 
-        // GET: api/TbEmpresas
+        // GET: api/Clientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TbEmpresa>>> GetTbEmpresas()
+        public async Task<ActionResult<IEnumerable<TbCliente>>> GetTbClientes()
         {
-          if (_context.TbEmpresas == null)
+          if (_context.TbClientes == null)
           {
               return NotFound();
           }
-            return await _context.TbEmpresas.ToListAsync();
+            return await _context.TbClientes.ToListAsync();
         }
 
-        // GET: api/TbEmpresas/5
+        // GET: api/Clientes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TbEmpresa>> GetTbEmpresa(int id)
+        public async Task<ActionResult<TbCliente>> GetTbCliente(int id)
         {
-          if (_context.TbEmpresas == null)
+          if (_context.TbClientes == null)
           {
               return NotFound();
           }
-            var tbEmpresa = await _context.TbEmpresas.FindAsync(id);
+            var tbCliente = await _context.TbClientes.FindAsync(id);
 
-            if (tbEmpresa == null)
+            if (tbCliente == null)
             {
                 return NotFound();
             }
 
-            return tbEmpresa;
+            return tbCliente;
         }
 
-        // PUT: api/TbEmpresas/5
+        // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTbEmpresa(int id, TbEmpresa tbEmpresa)
+        public async Task<IActionResult> PutTbCliente(int id, TbCliente tbCliente)
         {
-            if (id != tbEmpresa.IdEmpresa)
+            if (id != tbCliente.IdCliente)
             {
                 return BadRequest();
             }
 
-            _context.Entry(tbEmpresa).State = EntityState.Modified;
+            _context.Entry(tbCliente).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace ContabilidadeAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TbEmpresaExists(id))
+                if (!TbClienteExists(id))
                 {
                     return NotFound();
                 }
@@ -80,44 +80,44 @@ namespace ContabilidadeAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/TbEmpresas
+        // POST: api/Clientes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<TbEmpresa>> PostTbEmpresa(TbEmpresa tbEmpresa)
+        public async Task<ActionResult<TbCliente>> PostTbCliente(TbCliente tbCliente)
         {
-          if (_context.TbEmpresas == null)
+          if (_context.TbClientes == null)
           {
-              return Problem("Entity set 'db_ConFinContext.TbEmpresas'  is null.");
+              return Problem("Entity set 'db_ConFinContext.TbClientes'  is null.");
           }
-            _context.TbEmpresas.Add(tbEmpresa);
+            _context.TbClientes.Add(tbCliente);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTbEmpresa", new { id = tbEmpresa.IdEmpresa }, tbEmpresa);
+            return CreatedAtAction("GetTbCliente", new { id = tbCliente.IdCliente }, tbCliente);
         }
 
-        // DELETE: api/TbEmpresas/5
+        // DELETE: api/Clientes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTbEmpresa(int id)
+        public async Task<IActionResult> DeleteTbCliente(int id)
         {
-            if (_context.TbEmpresas == null)
+            if (_context.TbClientes == null)
             {
                 return NotFound();
             }
-            var tbEmpresa = await _context.TbEmpresas.FindAsync(id);
-            if (tbEmpresa == null)
+            var tbCliente = await _context.TbClientes.FindAsync(id);
+            if (tbCliente == null)
             {
                 return NotFound();
             }
 
-            _context.TbEmpresas.Remove(tbEmpresa);
+            _context.TbClientes.Remove(tbCliente);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool TbEmpresaExists(int id)
+        private bool TbClienteExists(int id)
         {
-            return (_context.TbEmpresas?.Any(e => e.IdEmpresa == id)).GetValueOrDefault();
+            return (_context.TbClientes?.Any(e => e.IdCliente == id)).GetValueOrDefault();
         }
     }
 }

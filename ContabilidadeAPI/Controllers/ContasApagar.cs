@@ -11,16 +11,16 @@ namespace ContabilidadeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TbContasAPagarsController : ControllerBase
+    public class ContasApagar : ControllerBase
     {
         private readonly db_ConFinContext _context;
 
-        public TbContasAPagarsController(db_ConFinContext context)
+        public ContasApagar(db_ConFinContext context)
         {
             _context = context;
         }
 
-        // GET: api/TbContasAPagars
+        // GET: api/ContasApagar
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbContasAPagar>>> GetTbContasAPagars()
         {
@@ -31,7 +31,7 @@ namespace ContabilidadeAPI.Controllers
             return await _context.TbContasAPagars.ToListAsync();
         }
 
-        // GET: api/TbContasAPagars/5
+        // GET: api/ContasApagar/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TbContasAPagar>> GetTbContasAPagar(int id)
         {
@@ -49,7 +49,7 @@ namespace ContabilidadeAPI.Controllers
             return tbContasAPagar;
         }
 
-        // PUT: api/TbContasAPagars/5
+        // PUT: api/ContasApagar/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTbContasAPagar(int id, TbContasAPagar tbContasAPagar)
@@ -80,7 +80,7 @@ namespace ContabilidadeAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/TbContasAPagars
+        // POST: api/ContasApagar
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<TbContasAPagar>> PostTbContasAPagar(TbContasAPagar tbContasAPagar)
@@ -95,7 +95,7 @@ namespace ContabilidadeAPI.Controllers
             return CreatedAtAction("GetTbContasAPagar", new { id = tbContasAPagar.IdContas }, tbContasAPagar);
         }
 
-        // DELETE: api/TbContasAPagars/5
+        // DELETE: api/ContasApagar/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTbContasAPagar(int id)
         {
