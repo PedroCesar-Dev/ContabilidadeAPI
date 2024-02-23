@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabilidadeAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabilidadeAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/Clientes
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TbCliente>>> GetTbClientes()
         {
           if (_context.TbClientes == null)
@@ -33,6 +35,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/Clientes/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<TbCliente>> GetTbCliente(int id)
         {
           if (_context.TbClientes == null)
@@ -52,6 +55,7 @@ namespace ContabilidadeAPI.Controllers
         // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutTbCliente(int id, TbCliente tbCliente)
         {
             if (id != tbCliente.IdCliente)
@@ -83,6 +87,7 @@ namespace ContabilidadeAPI.Controllers
         // POST: api/Clientes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<TbCliente>> PostTbCliente(TbCliente tbCliente)
         {
           if (_context.TbClientes == null)
@@ -97,6 +102,7 @@ namespace ContabilidadeAPI.Controllers
 
         // DELETE: api/Clientes/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTbCliente(int id)
         {
             if (_context.TbClientes == null)

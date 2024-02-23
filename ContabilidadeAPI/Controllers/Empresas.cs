@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabilidadeAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabilidadeAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/Empresas
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TbEmpresa>>> GetTbEmpresas()
         {
           if (_context.TbEmpresas == null)
@@ -33,6 +35,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/Empresas/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<TbEmpresa>> GetTbEmpresa(int id)
         {
           if (_context.TbEmpresas == null)
@@ -52,6 +55,7 @@ namespace ContabilidadeAPI.Controllers
         // PUT: api/Empresas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutTbEmpresa(int id, TbEmpresa tbEmpresa)
         {
             if (id != tbEmpresa.IdEmpresa)
@@ -83,6 +87,7 @@ namespace ContabilidadeAPI.Controllers
         // POST: api/Empresas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<TbEmpresa>> PostTbEmpresa(TbEmpresa tbEmpresa)
         {
           if (_context.TbEmpresas == null)
@@ -97,6 +102,7 @@ namespace ContabilidadeAPI.Controllers
 
         // DELETE: api/Empresas/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTbEmpresa(int id)
         {
             if (_context.TbEmpresas == null)

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabilidadeAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabilidadeAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/ContasApagar
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TbContasAPagar>>> GetTbContasAPagars()
         {
           if (_context.TbContasAPagars == null)
@@ -33,6 +35,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/ContasApagar/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<TbContasAPagar>> GetTbContasAPagar(int id)
         {
           if (_context.TbContasAPagars == null)
@@ -52,6 +55,7 @@ namespace ContabilidadeAPI.Controllers
         // PUT: api/ContasApagar/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutTbContasAPagar(int id, TbContasAPagar tbContasAPagar)
         {
             if (id != tbContasAPagar.IdContas)
@@ -83,6 +87,7 @@ namespace ContabilidadeAPI.Controllers
         // POST: api/ContasApagar
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<TbContasAPagar>> PostTbContasAPagar(TbContasAPagar tbContasAPagar)
         {
           if (_context.TbContasAPagars == null)
@@ -97,6 +102,7 @@ namespace ContabilidadeAPI.Controllers
 
         // DELETE: api/ContasApagar/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTbContasAPagar(int id)
         {
             if (_context.TbContasAPagars == null)

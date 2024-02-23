@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabilidadeAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabilidadeAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/ContasAReceber
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TbContasAReceber>>> GetTbContasARecebers()
         {
           if (_context.TbContasARecebers == null)
@@ -33,6 +35,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/ContasAReceber/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<TbContasAReceber>> GetTbContasAReceber(int id)
         {
           if (_context.TbContasARecebers == null)
@@ -52,6 +55,7 @@ namespace ContabilidadeAPI.Controllers
         // PUT: api/ContasAReceber/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutTbContasAReceber(int id, TbContasAReceber tbContasAReceber)
         {
             if (id != tbContasAReceber.IdContas)
@@ -83,6 +87,7 @@ namespace ContabilidadeAPI.Controllers
         // POST: api/ContasAReceber
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<TbContasAReceber>> PostTbContasAReceber(TbContasAReceber tbContasAReceber)
         {
           if (_context.TbContasARecebers == null)
@@ -97,6 +102,7 @@ namespace ContabilidadeAPI.Controllers
 
         // DELETE: api/ContasAReceber/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTbContasAReceber(int id)
         {
             if (_context.TbContasARecebers == null)

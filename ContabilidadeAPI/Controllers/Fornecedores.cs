@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabilidadeAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabilidadeAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/Fornecedores
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TbFornecedor>>> GetTbFornecedors()
         {
           if (_context.TbFornecedors == null)
@@ -33,6 +35,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/Fornecedores/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<TbFornecedor>> GetTbFornecedor(int id)
         {
           if (_context.TbFornecedors == null)
@@ -52,6 +55,7 @@ namespace ContabilidadeAPI.Controllers
         // PUT: api/Fornecedores/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutTbFornecedor(int id, TbFornecedor tbFornecedor)
         {
             if (id != tbFornecedor.IdFornecedor)
@@ -83,6 +87,7 @@ namespace ContabilidadeAPI.Controllers
         // POST: api/Fornecedores
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<TbFornecedor>> PostTbFornecedor(TbFornecedor tbFornecedor)
         {
           if (_context.TbFornecedors == null)
@@ -97,6 +102,7 @@ namespace ContabilidadeAPI.Controllers
 
         // DELETE: api/Fornecedores/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTbFornecedor(int id)
         {
             if (_context.TbFornecedors == null)

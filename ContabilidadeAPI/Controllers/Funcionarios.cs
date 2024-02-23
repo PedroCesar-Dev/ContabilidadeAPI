@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabilidadeAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabilidadeAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/Funcionarios
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TbFuncionario>>> GetTbFuncionarios()
         {
           if (_context.TbFuncionarios == null)
@@ -33,6 +35,7 @@ namespace ContabilidadeAPI.Controllers
 
         // GET: api/Funcionarios/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<TbFuncionario>> GetTbFuncionario(int id)
         {
           if (_context.TbFuncionarios == null)
@@ -52,6 +55,7 @@ namespace ContabilidadeAPI.Controllers
         // PUT: api/Funcionarios/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutTbFuncionario(int id, TbFuncionario tbFuncionario)
         {
             if (id != tbFuncionario.IdFuncionario)
@@ -83,6 +87,7 @@ namespace ContabilidadeAPI.Controllers
         // POST: api/Funcionarios
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<TbFuncionario>> PostTbFuncionario(TbFuncionario tbFuncionario)
         {
           if (_context.TbFuncionarios == null)
@@ -97,6 +102,7 @@ namespace ContabilidadeAPI.Controllers
 
         // DELETE: api/Funcionarios/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTbFuncionario(int id)
         {
             if (_context.TbFuncionarios == null)

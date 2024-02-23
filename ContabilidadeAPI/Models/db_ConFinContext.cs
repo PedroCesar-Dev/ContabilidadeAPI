@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+
 
 namespace ContabilidadeAPI.Models
 {
-    public partial class db_ConFinContext : DbContext
+    public partial class db_ConFinContext : IdentityDbContext<IdentityUser>
     {
         public db_ConFinContext()
         {
@@ -32,6 +36,8 @@ namespace ContabilidadeAPI.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<TbCliente>(entity =>
             {
                 entity.HasKey(e => e.IdCliente)
